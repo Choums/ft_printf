@@ -26,15 +26,15 @@ size_t	ft_parsing(char c, args)
 
 	}
 	else if (c == 'd')
-		value += ft_putnbr_fd(ft_itoa(va_args(args, int)), 1);
+		value += ft_putnbr_fd(ft_itoa(va_arg(args, int)), 1);
 	else if (c == 'i')
-		value += ft_putnbr_fd(ft_itoa(va_args(args, int)), 1);
+		value += ft_putnbr_fd(ft_itoa(va_arg(args, int)), 1);
 	else if (c == 'u')
-		value += ft_putnbr_fd(va_args(args, int), 1);
+		value += ft_putnbr_fd(va_arg(args, int), 1);
 	else if (c == 'x')
-		value += ft_putnbr_fd(ft_itoa_hexa(va_args(args, int), HEXA), 1);
+		value += ft_putnbr_fd(ft_itoa_hexa(va_arg(args, int), HEXA), 1);
 	else if (c == 'X')
-		value += ft_putnbr_fd(ft_itoa_hexa(va_args(args, int), ft_strupcase(HEXA)), 1);
+		value += ft_putnbr_fd(ft_itoa_hexa(va_arg(args, int), ft_strupcase(HEXA)), 1);
 	else if (c == '%')
 		value += ft_putchar_fd(c, 1);
 	else
