@@ -6,61 +6,56 @@
 /*   By: chaidel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 16:47:40 by chaidel           #+#    #+#             */
-/*   Updated: 2021/12/14 17:03:28 by chaidel          ###   ########.fr       */
+/*   Updated: 2021/12/15 23:15:58 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-static  void    ft_negative(int *sign, int *number)
+static int	ft_get_len_hexa(unsigned long int number)
 {
-    *sign = 1;
-    *number = -(*number);
+	int	len;
+
+	len = 0;
+	while (number > 0)
+	{
+		number /= 16;
+		len++;
+	}
+	return (len);
 }
 
-static  int ft_get_len_hexa(int number)
+static void	ft_put_neg(int *sign, unsigned long int *number)
 {
-    int len;
-
-    len = 0;
-    while (number > 0)
-    {
-        number /= 16;
-        len++;
-    }
-    return (len);
+	*sign = 1;
+	*number = -(*number);
 }
 
-static  void    ft_set_hexa(int sign, int *len, char *str, int number, char *base)
+char	*ft_itoa_hexa(unsigned long int number, char *base)
 {
-    while (--(*len) >= sign)
-    {
-        str[*len] = base[number % 16]
-        number /= 16;
-    }
-}
+	int		sign;
+	int		len;
+	char	*str;
 
-char    *ft_itoa_hexa(int number, char *base)
-{
-    int     sign;
-    int     len;
-    char    *str;
-
-    sign = 0;
+	sign = 0;
 	if (number == 0)
 		return (ft_strdup("0"));
-    if (number < 0)
-    {
-        len = ft_get_len(-number) + 1;
-        ft_negative(&sign, &number);
-    }
-    else
-        len = ft_get_len(number); 
-    str = (char *)ft_calloc(len + 1, sizeof(char));
-    if (!str)
-        return (NULL);
-    ft_set_hexa(sign, &len, str, number, base);
-    if (sign)
-        str[len] = '-';
-    return (str);
+	if (number < 0)
+	{
+		len = ft_get_len_hexa(-number) + 1;
+		ft_put_neg(&sign, &number);
+	}
+	else
+		len = ft_get_len_hexa(number);
+	str = (char *)ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	while (--len >= sign)
+	{
+		str[len] = base[number % 16];
+		number /= 16;
+	}
+	if (sign)
+		str[len] = '-';
+	return (str);
 }

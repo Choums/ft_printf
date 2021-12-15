@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_fd.c                                        :+:      :+:    :+:   */
+/*   exept.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chaidel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 13:54:41 by chaidel           #+#    #+#             */
-/*   Updated: 2021/12/15 21:30:24 by chaidel          ###   ########.fr       */
+/*   Created: 2021/12/15 21:57:54 by chaidel           #+#    #+#             */
+/*   Updated: 2021/12/15 23:26:27 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-size_t	ft_putnbr_fd(int n, int fd)
+size_t	ft_un(va_list args)
 {
-	long int	nbr;
-	size_t		len;
+	size_t				o;
+	unsigned long int	nb;
+
+	o = 0;
+	nb = va_arg(args, unsigned int);
+	if (nb >= (unsigned int)0)
+		o += ft_unsigned_putnbr_fd(nb, 1);
+	else if (nb == (unsigned int)-1)
+		o += ft_unsigned_putnbr_fd(UINT_MAX, 1);
+	else if (nb < (unsigned int)-1)
+		o += ft_unsigned_putnbr_fd(UINT_MAX + nb, 1);
+	return (o);
+}
+
+size_t	ft_unsigned_putnbr_fd(unsigned long int n, int fd)
+{
+	unsigned long int	nbr;
+	size_t				len;
 
 	len = 0;
 	if (fd < 0)

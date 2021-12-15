@@ -1,6 +1,4 @@
-LIBFT	= ./libft
-
-SRCS	= 	ft_printf.c
+SRCS	= 	ft_printf.c printf_utils/convert.c printf_utils/except.c 
 
 OBJS	= 	${SRCS:.c=.o}
 
@@ -8,25 +6,26 @@ NAME	= 	libftprintf.a
 
 CC		= 	cc
 
-CFLAGS	= 	-Wall -Wextra -Werror
+CFLAGS	= 	-Wall -Wextra -Werror -I.
 
 .c.o	= 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 RM		= 	rm -f
 
 ${NAME}:	${OBJS}
+			make all -C ./libft
+			cp libft/libft.a ${NAME}
 			ar rcs ${NAME} ${OBJS}
 
 all:		${NAME}
-			make all -C ${LIBFT}
 
 clean:	
 			${RM} ${OBJS}
-			make clean -C ${LIBFT}
+			$(MAKE) clean -C ./libft 
 
 fclean:		clean
 			${RM} ${NAME}
-			make fclean -C ${LIBFT}
+			$(MAKE) fclean -C ./libft
 
 re:			fclean all
 
