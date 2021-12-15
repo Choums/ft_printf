@@ -6,7 +6,7 @@
 /*   By: chaidel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 10:35:35 by chaidel           #+#    #+#             */
-/*   Updated: 2021/12/15 23:28:14 by chaidel          ###   ########.fr       */
+/*   Updated: 2021/12/15 23:51:22 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		ft_printf(const char *str, ...);
 size_t	ft_parsing(char c, va_list args);
 size_t	ft_leaker(char c, va_list args);
 size_t	ft_un(va_list args);
+size_t	ft_check_str(va_list args);
 char	*ft_itoa_hexa(unsigned long int number, char *base);
 void	*ft_calloc(size_t length, size_t type);
 size_t	ft_putstr_fd(char *str, int fd);
