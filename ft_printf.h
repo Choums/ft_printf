@@ -6,7 +6,7 @@
 /*   By: chaidel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 10:35:35 by chaidel           #+#    #+#             */
-/*   Updated: 2021/12/15 23:51:22 by chaidel          ###   ########.fr       */
+/*   Updated: 2021/12/16 00:03:38 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdarg.h>
 # include <string.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
 

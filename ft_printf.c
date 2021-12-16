@@ -6,7 +6,7 @@
 /*   By: chaidel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 18:15:30 by chaidel           #+#    #+#             */
-/*   Updated: 2021/12/15 23:54:55 by chaidel          ###   ########.fr       */
+/*   Updated: 2021/12/16 02:13:51 by chaidel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ size_t	ft_check_str(va_list args)
 	size_t	o;
 	char	*str;
 
-	str = va_arg(args, char *);	
+	str = va_arg(args, char *);
 	o = 0;
 	if (str == NULL)
 		o += ft_putstr_fd("(null)", 1);
